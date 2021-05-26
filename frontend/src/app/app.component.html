@@ -1,11 +1,53 @@
-<h2>Create Quote  </h2>
-quote: <input #quote type="text">
-author <input #author type="text">
-<button (click)="create(quote.value, author.value)"> Submit</button>
+<div class="container bg-light">
 
-<ul>
-  <li *ngFor="let quote of quotes | async">
-    "{{ quote.quote }}", {{ quote.author }}
-    <button (click)="delete(quote._id)">Delete</button>
-  </li>
-</ul>
+  <div class="py-5 text-center">
+    <h1>Mean GraphQl CRUD - Quotes List</h1>
+  </div>  
+  <div class="card">    
+    <div class="card-body">
+      <h2 class="d-flex justify-content-between align-items-center mb-3">Create Quote </h2>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Quote:</label>
+          <input #quote class="form-control">
+        </div>
+        <div class="form-group">
+          <label >Author:</label>
+          <input #author type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="create(quote.value, author.value)">Submit</button>
+      </form>
+    </div>
+  </div>
+      
+  <div class="card">
+    <div class="card-body">
+      <h2>Quote List </h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col" style="width: 50%;" >Quote</th>
+        <th scope="col" style="width: 20%;">Author</th>
+        <th scope="col" style="width: 15%;" class="text-center">Update</th>
+        <th scope="col" style="width: 15%;" class="text-center">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let quote of quotes | async">
+        <td>
+          "{{ quote.quote }}"
+        </td>
+        <td>
+          {{ quote.author }}
+        </td>
+        <td class="text-center">
+          <button class="btn-primary">Update</button>
+        </td>
+        <td class="text-center">
+          <button class="btn-primary" (click)="delete(quote._id)">Delete</button>
+        </td>      
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

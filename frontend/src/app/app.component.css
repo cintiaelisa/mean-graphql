@@ -1,0 +1,9 @@
+.container {
+    max-width: 960px;
+  }
+.card {
+    margin: 1rem;
+}
+.table {
+    margin-top: 2rem;
+}
