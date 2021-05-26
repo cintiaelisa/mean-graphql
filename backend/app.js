@@ -27,7 +27,7 @@ app.use(
 
 mongoose
   .connect(
-    `mongodb://localhost:27017/${config.dbname}?retryWrites=true&w=majority`,
+    `${config.url}/${config.dbname}?retryWrites=true&w=majority`,
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
