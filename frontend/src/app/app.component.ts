@@ -27,6 +27,15 @@ const CREATE_QUOTE = gql`
     }
   }
 `;
+const DELETE_QUOTE = gql`
+  mutation deleteQuote($id: ID!) {
+    deleteQuote(id: $id) {
+      _id
+      quote
+      author
+    }
+  }
+`;
 
 @Component({
   selector: 'app-root',
@@ -66,5 +75,18 @@ export class AppComponent implements OnInit {
         console.log("created");
       });
   }
-  
+  delete(id: string) {
+    console.log(id);
+    this.apollo
+      .mutate({
+        mutation: DELETE_QUOTE,
+        refetchQueries: [{ query: GET_QUOTES }],
+        variables: {
+          id: id,
+        },
+      })
+      .subscribe(() => {
+        console.log("deleted");
+      });
+  }  
 }

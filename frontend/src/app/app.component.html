@@ -6,6 +6,6 @@ author <input #author type="text">
 <ul>
   <li *ngFor="let quote of quotes | async">
     "{{ quote.quote }}", {{ quote.author }}
-    <!-- <button (click)="delete()"></button> -->
+    <button (click)="delete(quote._id)">Delete</button>
   </li>
 </ul>
