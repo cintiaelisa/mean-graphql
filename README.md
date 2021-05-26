@@ -3,7 +3,7 @@
 The term MEAN stack refers to a collection of JavaScript based technologies used to develop web applications. MEAN is an acronym for MongoDB, ExpressJS, AngularJS and Node. js.
 Add to that GraphQL was used in this project to expose data from MongoDB.
 
-This is a simple application of Quotes where you can register quotes and it author. Also you can update and delete the quotes.
+This is a simple application of Quotes where you can register quotes and its author. Also you can update and delete the quotes.
 
 ## Frontend
 
