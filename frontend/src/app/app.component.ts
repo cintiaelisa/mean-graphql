@@ -18,6 +18,16 @@ const GET_QUOTES = gql`
   }
 `;
 
+const CREATE_QUOTE = gql`
+  mutation createQuote($quote: String!, $author: String!) {
+    createQuote(quoteInput: { quote: $quote, author: $author }) {
+      _id
+      quote
+      author
+    }
+  }
+`;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -42,8 +52,19 @@ export class AppComponent implements OnInit {
       );
   }
 
-  create(quote: string , author: string) {
-    console.log(quote, author);
+  create(quote: string, author: string) {
+    this.apollo
+      .mutate({
+        mutation: CREATE_QUOTE,
+        refetchQueries: [{ query: GET_QUOTES }],
+        variables: {
+          quote: quote,
+          author: author,
+        },
+      })
+      .subscribe(() => {
+        console.log("created");
+      });
   }
   
 }
