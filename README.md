@@ -42,8 +42,9 @@ In the command line navigate to frontend folder:
 
     $cd frontend
     
-Run the command:
+Run commands:
 
+    $npm install
     $npm start
     
 ### References
